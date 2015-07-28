@@ -1,0 +1,56 @@
+tile.guardianChest.name=Baú Guardião
+tile.LargeGuardianChest.name=Baú Guardião Grande
+item.guardianTier0.name=Baú Guardião
+item.guardianTier1.name=Baú Guardião Despertado
+item.guardianTier2.name=Baú Guardião Vinculado
+item.boundMapTier0.name=Mapa Guardião
+item.boundMapTier1.name=Mapa Guardião Vinculado
+
+
+desc.guardianTier0.Line1=Um %1
+desc.guardianTier0.Line2=guardará seu equipamento em um
+desc.guardianTier0.Line3=baú quando você morrer. Use isso
+desc.guardianTier0.Line4=para despertá-lo (Custo em Nível: %1).
+
+desc.guardianTier1.Line1=Isso guardará seu equipamento 
+desc.guardianTier1.Line2=em um baú quando você morrer.
+desc.guardianTier1.Line3=Guarde isso no seu inventário
+desc.guardianTier1.Line4=principal para ativá-lo ao morrer.
+
+desc.guardianTier2.Line1=Isso guardará seu equipamento 
+desc.guardianTier2.Line2=em um baú quando você morrer e
+desc.guardianTier2.Line3=e esse baú vai tentar surgir
+desc.guardianTier2.Line4=próximo de você.
+
+desc.boundMapTier0.Line1=Use isso para se vincular a esse
+desc.boundMapTier0.Line2=mapa. (Level cost: %2) Depois disso,
+desc.boundMapTier0.Line3=você pode entregá-lo a um 
+desc.boundMapTier0.Line4=%1.
+
+desc.boundMapTier1.Line1=Misture isso com um
+desc.boundMapTier1.Line2=%1 para criar um
+desc.boundMapTier1.Line3=%2. Feito isso, ele
+desc.boundMapTier1.Line4=surgirá próximo de você, caso morra.
+
+desc.guardianTier0.Warning=Você precisa de ter pelo menos nível %1 para despertar isso.
+desc.guardianTier1.Warning=%1: "Me dê um mapa em branco e eu farei um mapa que eu possa usar para te encontrar!"
+desc.guardianTier2.Warning=%1: "Se você morrer, te encontrarei próximo do último lugar onde você dormiu, ou no local onde você surgiu no mundo, caso ainda não tenha dormido."
+desc.boundMapTier0.Warning=Você precisa ser pelo menos nível %1 para se vincular a isso.
+desc.boundMapTier1.Warning=Agora isso parece estar pronto para entregar  a um %1.
+desc.SpawnLocation.Warning=%1: "Não se preocupe, %2! Guardarei seu equipamento em
+desc.guardianChestRightClick.Minute=%1: "Somente %2 poderá resgatar meu conteúdo pelo próximo minuto!"
+desc.guardianChestRightClick.Minutes=%1: "Somente %2 poderá resgatar meu conteúdo pelos próximos %3 minutos!"
+desc.guardianChestRightClick.Seconds=%1: "Somente %2 poderá resgatar meu conteúdo pelos próximos %3 segundos!"
+desc.boundMapTier0.Crafted=%1: "Muito bem! Agora use isso para vinculá-lo a você e depois me devolva."
+
+config.Category.General=Geral
+config.Error.Message=Um erro ocorreu ao carregar o arquivo de configuações do Guardian Chests!
+
+config.GuardianTier1.LevelRequirement=Custo em nível para despertar um %1: (padrão: 1)
+config.BoundMapTier1.LevelRequirement=Custo em nível para vincular um %1: (padrão: 10)
+config.GuardianIdol.Requirement=É necessário um %1 para guardar os itens no baú depois da morte?
+config.Enchantments.AreAllSoulBound=Devo manter todos itens encantados depois da morte, ou somente os encantados com Soulbound (enderIO, ArsMagicka2) ? (padrão: false)
+config.AllItems.MakeDrop=Forçar todos itens não-Soulbound a caírem ao se morrer(alguns mods seguram esses items por padrão) (padrão: true)
+config.maxDistanceToSearchForAFreeSpot.Radius=Quando o ponto de spawn de um %1 estiver bloqueado, ele surgirá no ponto livre mais próximo dentro desse raio, em blocos: (padrão: 5)
+config.timeBeforeUnsecure.Seconds=Período de segundos após a morte enquanto um %1 somente poderá ser aberto pelo dono: (padrão = 300, use 0 para desabilitar)
+config.Broadcast.ChestCoordinates=O %1 deve avisar no chat as suas coordenadas? (padrão = true)
