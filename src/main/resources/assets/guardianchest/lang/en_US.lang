@@ -1,6 +1,7 @@
+itemGroup.CreativeTabName=Guardian Chests
 tile.guardianChest.name=Guardian Chest
 tile.LargeGuardianChest.name=Large Guardian Chest
-item.guardianTier0.name=Guardian Chest
+item.guardianTier0.name=Inert Guardian Chest
 item.guardianTier1.name=Awakened Guardian Chest
 item.guardianTier2.name=Bound Guardian Chest
 item.boundMapTier0.name=Unbound Map
@@ -45,13 +46,19 @@ desc.boundMapTier0.Crafted=%1: "Good! Now use this to bind it to you, then retur
 
 
 config.Category.General=General
+config.Category.Soulbinding=Soulbound Equipment
+config.Category.Damage=Equipment Damage
+
+
 config.Error.Message=An error occurred loading Guardian Chests configuration file!
 
 config.GuardianTier1.LevelRequirement=Level cost to awaken a %1: (default: 1)
 config.BoundMapTier1.LevelRequirement=Level cost to bind an %1: (default: 10)
 config.GuardianIdol.Requirement=Is a %1 required to save items to chests on death? (default: true)
-config.Enchantments.AreAllSoulBound=Will you keep all enchanted items after death, or just Soulbound (enderIO, ArsMagicka2) ones? (default: false)
+config.Enchantments.AreAllSoulBound=Keep all enchanted items in inventory after death (false will keep only Soulbound - enderIO, ArsMagicka2 - ones)? (default: false)
 config.AllItems.MakeDrop=Force all non-soulbound items to drop on death (some mods hold inventory items by default) (default: true)
 config.maxDistanceToSearchForAFreeSpot.Radius=When the %1's spawn point is blocked, it will spawn at the closest free spot within this radius, in blocks: (default: 5)
 config.timeBeforeUnsecure.Seconds=Time in seconds after death while a %1 will only drop items for his owner: (default = 300, set 0 to disable security)
-config.Broadcast.ChestCoordinates=Should the %1 post a message on chat warning of its coordinates? (default = true)
+config.Inform.ChestCoordinates=Should the %1 warn of its coordinates? (default = true)
+config.applyDamage.onEquip=Worn equipment will suffer this damage if user dies: (default = 10, 0 to disable)
+config.Damage.isPercentual=Is the damage informed a percentage of total item durability (by default: if true, a 30 durability item will suffer 3 durability, if false it will suffer 10 durability)? (default = true)

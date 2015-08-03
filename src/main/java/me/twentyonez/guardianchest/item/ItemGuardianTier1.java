@@ -27,7 +27,7 @@ public class ItemGuardianTier1 extends Item {
 	public ItemGuardianTier1() {
 		setUnlocalizedName("guardianTier1");
 		setTextureName("guardianchest:guardianTier1");
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(GCMainRegistry.GCtab);
 		setMaxStackSize(1);
 	}
 	

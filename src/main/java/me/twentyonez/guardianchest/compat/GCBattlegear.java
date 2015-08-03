@@ -33,7 +33,7 @@ public class GCBattlegear {
 			for(int i = FIRST_SLOT; i <= LAST_SLOT; i++){
 				ItemStack droppedItem = player.inventory.getStackInSlot(i);
 				if (droppedItem != null) {
-					items.add(droppedItem);
+					items.add(applyItemDamage(droppedItem));
 	                slot.add(i);
 	                type.add("battlegear");
 	                if ((saveItems != 0) || GCsoulBinding.keepItem(droppedItem, i, "battlegear", player, sbInventoryLevel)) {
@@ -49,6 +49,25 @@ public class GCBattlegear {
 
     public static boolean isInstalled() {
         return isInstalled;
+    }
+    
+    public static ItemStack applyItemDamage(ItemStack itemstack){
+    	if(ConfigHelper.applyDamageOnEquip == 0) return itemstack;
+    	if (itemstack != null 
+                && itemstack.isItemStackDamageable()
+                && itemstack.getItem().isDamageable()
+                && (!itemstack.isStackable())
+                && (!itemstack.getItem().getHasSubtypes())
+                && (itemstack.getItem().getMaxDamage() > 0) ) {
+    		if (ConfigHelper.damageOnEquipPercentage) {
+        		final int newDamageValue = (int) (itemstack.getMaxDamage() * (ConfigHelper.applyDamageOnEquip/100) + itemstack.getItemDamage());
+                itemstack.setItemDamage(Math.min(newDamageValue, itemstack.getMaxDamage() - 1));
+    		} else {
+        		final int newDamageValue = (int) (itemstack.getItemDamage() + ConfigHelper.applyDamageOnEquip);
+                itemstack.setItemDamage(Math.min(newDamageValue, itemstack.getMaxDamage() - 1));
+    		}
+        }
+    	return itemstack;
     }
 }
 

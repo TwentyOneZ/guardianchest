@@ -1,6 +1,7 @@
+itemGroup.CreativeTabName=Baús Guardiões
 tile.guardianChest.name=Baú Guardião
 tile.LargeGuardianChest.name=Baú Guardião Grande
-item.guardianTier0.name=Baú Guardião
+item.guardianTier0.name=Baú Guardião Inerte
 item.guardianTier1.name=Baú Guardião Despertado
 item.guardianTier2.name=Baú Guardião Vinculado
 item.boundMapTier0.name=Mapa Guardião
@@ -10,7 +11,7 @@ item.boundMapTier1.name=Mapa Guardião Vinculado
 desc.guardianTier0.Line1=Um %1
 desc.guardianTier0.Line2=guardará seu equipamento em um
 desc.guardianTier0.Line3=baú quando você morrer. Use isso
-desc.guardianTier0.Line4=para despertá-lo (Custo em Nível: %1).
+desc.guardianTier0.Line4=para despertá-lo (Custo em Nível: %2).
 
 desc.guardianTier1.Line1=Isso guardará seu equipamento 
 desc.guardianTier1.Line2=em um baú quando você morrer.
@@ -44,6 +45,9 @@ desc.guardianChestRightClick.Seconds=%1: "Somente %2 poderá resgatar meu conte�
 desc.boundMapTier0.Crafted=%1: "Muito bem! Agora use isso para vinculá-lo a você e depois me devolva."
 
 config.Category.General=Geral
+config.Category.Soulbinding=Equipamentos Vinculados (Soulbound)
+config.Category.Damage=Dano em Equipamento
+
 config.Error.Message=Um erro ocorreu ao carregar o arquivo de configuações do Guardian Chests!
 
 config.GuardianTier1.LevelRequirement=Custo em nível para despertar um %1: (padrão: 1)
@@ -53,4 +57,6 @@ config.Enchantments.AreAllSoulBound=Devo manter todos itens encantados depois da
 config.AllItems.MakeDrop=Forçar todos itens não-Soulbound a caírem ao se morrer(alguns mods seguram esses items por padrão) (padrão: true)
 config.maxDistanceToSearchForAFreeSpot.Radius=Quando o ponto de spawn de um %1 estiver bloqueado, ele surgirá no ponto livre mais próximo dentro desse raio, em blocos: (padrão: 5)
 config.timeBeforeUnsecure.Seconds=Período de segundos após a morte enquanto um %1 somente poderá ser aberto pelo dono: (padrão = 300, use 0 para desabilitar)
-config.Broadcast.ChestCoordinates=O %1 deve avisar no chat as suas coordenadas? (padrão = true)
+config.Inform.ChestCoordinates=O %1 deve avisar as suas coordenadas? (padrão = true)
+config.applyDamage.onEquip=Itens equipados perderão essa durabilidade se o usuário morrer: (padrão = 10, 0 para desabilitar)
+config.Damage.isPercentual=O dano informado é um percentual da durabilidade máxima (por padrão: se verdadeiro, um item de durabilidade 30 perderá 3 de durabilidade, se falso perderá 10)? (padrão = true)

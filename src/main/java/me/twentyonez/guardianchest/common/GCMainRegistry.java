@@ -11,6 +11,7 @@ import me.twentyonez.guardianchest.item.ItemGuardianTier2;
 import me.twentyonez.guardianchest.util.ConfigHelper;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
@@ -30,6 +31,10 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
+import net.minecraft.creativetab.CreativeTabs;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * GuardianChest mod
@@ -53,23 +58,37 @@ public class GCMainRegistry {
 	
 	public static GCMainRegistry modInstance;
 	
+	public static CreativeTabs GCtab = new CreativeTabs("CreativeTabName") {
+	    @Override
+	    @SideOnly(Side.CLIENT)
+	    public Item getTabIconItem() {
+	        return Item.getItemFromBlock(GCBlocks.GCChest);
+	    }
+	};
+	
 	public GCMainRegistry() {
 		
 	}
-	
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		event.getModLog().log(Level.INFO, "Starting to load Guardian Chest!");
-		GameRegistry.registerItem(guardianTier0, "guardianTier0");
-		GameRegistry.registerItem(guardianTier1, "guardianTier1");
-		GameRegistry.registerItem(guardianTier2, "guardianTier2");
-		GameRegistry.registerItem(boundMapTier0, "boundMapTier0");
-		GameRegistry.registerItem(boundMapTier1, "boundMapTier1");
+		ConfigHelper.setupConfig(new Configuration(event.getSuggestedConfigurationFile()), event.getModLog());
+		if (ConfigHelper.requireGuardianIdol) {
+			GameRegistry.registerItem(guardianTier0, "guardianTier0");
+			GameRegistry.registerItem(guardianTier1, "guardianTier1");
+			GameRegistry.registerItem(guardianTier2, "guardianTier2");
+			GameRegistry.registerItem(boundMapTier0, "boundMapTier0");
+			GameRegistry.registerItem(boundMapTier1, "boundMapTier1");
+			this.guardianTier0.setCreativeTab(GCtab);
+			this.guardianTier1.setCreativeTab(GCtab);
+			this.guardianTier2.setCreativeTab(GCtab);
+			this.boundMapTier0.setCreativeTab(GCtab);
+			this.boundMapTier1.setCreativeTab(GCtab);
+		}
 		GCBlocks.mainRegistry();
 		proxy.registerTileEntities();
 		proxy.registerRenderThings();
-		
-		ConfigHelper.setupConfig(new Configuration(event.getSuggestedConfigurationFile()), event.getModLog());
 	}
 	
 	@EventHandler
@@ -77,10 +96,12 @@ public class GCMainRegistry {
 		MinecraftForge.EVENT_BUS.register(new GCEventHandler());
 		FMLCommonHandler.instance().bus().register(new GCEventHandler()); 
 		
-		GameRegistry.addRecipe(new ItemStack(GCMainRegistry.guardianTier0), "srs", "tct", "srs", 's', Blocks.stone, 'c', Blocks.chest, 'r', Items.redstone, 't', Blocks.redstone_torch);
-		GameRegistry.addShapelessRecipe(new ItemStack(GCMainRegistry.guardianTier2), GCMainRegistry.guardianTier1, GCMainRegistry.boundMapTier1);
-		GameRegistry.addShapelessRecipe(new ItemStack(GCMainRegistry.boundMapTier0), GCMainRegistry.guardianTier1, Items.map);
-		GameRegistry.addShapelessRecipe(new ItemStack(GCMainRegistry.boundMapTier1), GCMainRegistry.guardianTier2);
+		if (ConfigHelper.requireGuardianIdol) {
+			GameRegistry.addRecipe(new ItemStack(GCMainRegistry.guardianTier0), "srs", "tct", "srs", 's', Blocks.stone, 'c', Blocks.chest, 'r', Items.redstone, 't', Blocks.redstone_torch);
+			GameRegistry.addShapelessRecipe(new ItemStack(GCMainRegistry.guardianTier2), GCMainRegistry.guardianTier1, GCMainRegistry.boundMapTier1);
+			GameRegistry.addShapelessRecipe(new ItemStack(GCMainRegistry.boundMapTier0), GCMainRegistry.guardianTier1, Items.map);
+			GameRegistry.addShapelessRecipe(new ItemStack(GCMainRegistry.boundMapTier1), GCMainRegistry.guardianTier2);
+		}
 	}
 	
 	@EventHandler

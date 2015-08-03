@@ -1,6 +1,7 @@
 package me.twentyonez.guardianchest.block;
 
 import net.minecraft.block.Block;
+import me.twentyonez.guardianchest.common.GCMainRegistry;
 import me.twentyonez.guardianchest.util.ConfigHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.ChatComponentText;
@@ -30,7 +31,7 @@ public class GCBlocks {
 
 	private static void initialiseBlock() {
 		// TODO Auto-generated method stub
-		GCChest = new GCChest(0).setBlockName("guardianChest").setCreativeTab(CreativeTabs.tabMisc).setBlockTextureName("guardianchest:GuardianChest").setBlockUnbreakable().setLightLevel(0.7F).setResistance(100.0F);
+		GCChest = new GCChest(0).setBlockName("guardianChest").setCreativeTab(GCMainRegistry.GCtab).setBlockTextureName("guardianchest:GuardianChest").setBlockUnbreakable().setLightLevel(0.7F).setResistance(6000.0F);
 	}
 	
 }

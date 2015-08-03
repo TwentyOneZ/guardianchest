@@ -219,8 +219,8 @@ public class GCEventHandler {
 				world.setBlock(posX1, posY1, posZ1, GCBlocks.GCChest, 0, 2);
 				TileEntityGCChest chest1 = (TileEntityGCChest) world.getTileEntity(posX1, posY1, posZ1);
 
-				// Warn the entire world of its existence
-				if ((!world.isRemote) && (ConfigHelper.broadcastChestCoords)) {
+				// Warn user of its existence
+				if ((!world.isRemote) && (ConfigHelper.informCoords)) {
 		    		String warning = new String(LanguageRegistry.instance().getStringLocalization("desc.SpawnLocation.Warning").replace("%1", LanguageRegistry.instance().getStringLocalization("tile.guardianChest.name")).replace("%2", player.getDisplayName()) + ": " + posX1 + "," + posY1 + "," + posZ1 + ".");
 		    		player.addChatComponentMessage(new ChatComponentText(warning));
 		    	}
@@ -236,7 +236,11 @@ public class GCEventHandler {
 				}
 				// Add an ItemGuardianTier0 to chest.
 				if (saveItems != -1) {
-					chest1.setInventorySlotContents(chest1slot, new ItemStack(GCMainRegistry.guardianTier0));
+					if (ConfigHelper.levelCostGuardianTier1 != 0) {
+						chest1.setInventorySlotContents(chest1slot, new ItemStack(GCMainRegistry.guardianTier0));
+					} else {
+						chest1.setInventorySlotContents(chest1slot, new ItemStack(GCMainRegistry.guardianTier1));
+					}
 					chest1slot++;
 				}
 		        // Dump collected inventory into chest				

@@ -44,16 +44,35 @@ public class ConfigHelper {
 	public static Integer timeBeforeUnsecure;
 	private static Property timeBeforeUnsecureProp;
 
-	public static boolean broadcastChestCoords;
-	private static Property broadcastChestCoordsProp;
+	public static Double applyDamageOnEquip;
+	private static Property applyDamageOnEquipProp;
+	
+	public static boolean informCoords;
+	private static Property informCoordsProp;
+
+	public static boolean damageOnEquipPercentage;
+	private static Property damageOnEquipPercentageProp;
 
 	public static void setupConfig(Configuration cfg, Logger logger) {
 		try {
-			anyEnchantSoulBindsProp = cfg.get(LanguageRegistry.instance().getStringLocalization("config.Category.General"), "anyEnchantSoulBinds", false);
+
+			applyDamageOnEquipProp = cfg.get(LanguageRegistry.instance().getStringLocalization("config.Category.Damage"), "applyDamageOnEquip", 10.0);
+			applyDamageOnEquipProp.comment = LanguageRegistry.instance().getStringLocalization("config.applyDamage.onEquip");
+			applyDamageOnEquip = applyDamageOnEquipProp.getDouble(10.0);
+
+			damageOnEquipPercentageProp = cfg.get(LanguageRegistry.instance().getStringLocalization("config.Category.Damage"), "damageOnEquipPercentage", true);
+			damageOnEquipPercentageProp.comment = LanguageRegistry.instance().getStringLocalization("config.Damage.isPercentual");
+			damageOnEquipPercentage = damageOnEquipPercentageProp.getBoolean(true);
+
+			requireGuardianIdolProp = cfg.get(LanguageRegistry.instance().getStringLocalization("config.Category.General"), "requireGuardianIdol", true);
+			requireGuardianIdolProp.comment = LanguageRegistry.instance().getStringLocalization("config.GuardianIdol.Requirement").replace("%1", LanguageRegistry.instance().getStringLocalization("item.guardianTier0.name"));
+			requireGuardianIdol = requireGuardianIdolProp.getBoolean(true);
+
+			anyEnchantSoulBindsProp = cfg.get(LanguageRegistry.instance().getStringLocalization("config.Category.Soulbinding"), "anyEnchantSoulBinds", false);
 			anyEnchantSoulBindsProp.comment = LanguageRegistry.instance().getStringLocalization("config.Enchantments.AreAllSoulBound");
 			anyEnchantSoulBinds = anyEnchantSoulBindsProp.getBoolean(false);
 
-			makeAllItemsDropProp = cfg.get(LanguageRegistry.instance().getStringLocalization("config.Category.General"), "makeAllItemsDrop", true);
+			makeAllItemsDropProp = cfg.get(LanguageRegistry.instance().getStringLocalization("config.Category.Soulbinding"), "makeAllItemsDrop", true);
 			makeAllItemsDropProp.comment = LanguageRegistry.instance().getStringLocalization("config.AllItems.MakeDrop");
 			makeAllItemsDrop = makeAllItemsDropProp.getBoolean(true);
 
@@ -65,10 +84,6 @@ public class ConfigHelper {
 			levelCostBoundMapTier1Prop.comment = LanguageRegistry.instance().getStringLocalization("config.BoundMapTier1.LevelRequirement").replace("%1", LanguageRegistry.instance().getStringLocalization("item.boundMapTier0.name"));
 			levelCostBoundMapTier1 = levelCostBoundMapTier1Prop.getInt(10);
 
-			requireGuardianIdolProp = cfg.get(LanguageRegistry.instance().getStringLocalization("config.Category.General"), "requireGuardianIdol", true);
-			requireGuardianIdolProp.comment = LanguageRegistry.instance().getStringLocalization("config.GuardianIdol.Requirement").replace("%1", LanguageRegistry.instance().getStringLocalization("item.guardianTier0.name"));
-			requireGuardianIdol = requireGuardianIdolProp.getBoolean(true);
-
 			maxRadiusToSearchForAFreeSpotProp = cfg.get(LanguageRegistry.instance().getStringLocalization("config.Category.General"), "maxRadiusToSearchForAFreeSpot", 5);
 			maxRadiusToSearchForAFreeSpotProp.comment = LanguageRegistry.instance().getStringLocalization("config.maxDistanceToSearchForAFreeSpot.Radius").replace("%1", LanguageRegistry.instance().getStringLocalization("tile.guardianChest.name"));
 			maxRadiusToSearchForAFreeSpot = maxRadiusToSearchForAFreeSpotProp.getInt(5);
@@ -77,9 +92,9 @@ public class ConfigHelper {
 			timeBeforeUnsecureProp.comment = LanguageRegistry.instance().getStringLocalization("config.timeBeforeUnsecure.Seconds").replace("%1", LanguageRegistry.instance().getStringLocalization("tile.guardianChest.name"));
 			timeBeforeUnsecure = timeBeforeUnsecureProp.getInt(300);
 
-			broadcastChestCoordsProp = cfg.get(LanguageRegistry.instance().getStringLocalization("config.Category.General"), "broadcastChestCoords", true);
-			broadcastChestCoordsProp.comment = LanguageRegistry.instance().getStringLocalization("config.Broadcast.ChestCoordinates").replace("%1", LanguageRegistry.instance().getStringLocalization("tile.guardianChest.name"));
-			broadcastChestCoords = broadcastChestCoordsProp.getBoolean(true);
+			informCoordsProp = cfg.get(LanguageRegistry.instance().getStringLocalization("config.Category.General"), "informCoords", true);
+			informCoordsProp.comment = LanguageRegistry.instance().getStringLocalization("config.Inform.ChestCoordinates").replace("%1", LanguageRegistry.instance().getStringLocalization("tile.guardianChest.name"));
+			informCoords = informCoordsProp.getBoolean(true);
 
 		} catch(Exception e) {
 			logger.log(Level.ERROR, LanguageRegistry.instance().getStringLocalization("config.Error.Message"));

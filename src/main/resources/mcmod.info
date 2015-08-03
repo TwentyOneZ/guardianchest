@@ -2,15 +2,15 @@
 {
   "modid": "guardianchest",
   "name": "Guardian Chest",
-  "description": "Inventory saving system when dying",
+  "description": "A death chest mod.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/2486526-guardian-chests",
   "updateUrl": "",
   "authorList": ["TwentyOneZ"],
-  "credits": "NightKosh, Mr.Crayfish and Tyler15555 for their mods and open source, and also the Forge and FML guys (and girls), for making the example file.",
+  "credits": "Based on NightKosh's GraveStone mod, Dr.Cyano's Lootable Corpses mod and Tyler15555's Death Chest mod. Thank you guys!",
   "logoFile": "",
-  "screenshots": [http://media-elerium.cursecdn.com/attachments/25/33/guardian-chest.png],
-  "dependencies": []
+  "screenshots": [],
+  "dependencies": [mod_MinecraftForge]
 }
 ]

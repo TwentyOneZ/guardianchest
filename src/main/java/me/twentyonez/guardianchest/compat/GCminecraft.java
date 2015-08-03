@@ -2,6 +2,7 @@ package me.twentyonez.guardianchest.compat;
 
 import java.util.List;
 
+import me.twentyonez.guardianchest.util.ConfigHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
@@ -25,7 +26,11 @@ public class GCminecraft {
 		for(int i = 0; i < player.inventory.mainInventory.length; i++){
 			ItemStack droppedItem = player.inventory.getStackInSlot(i);
 			if (droppedItem != null) {
-				items.add(droppedItem);
+				if (player.inventory.getCurrentItem() == droppedItem) {
+					items.add(applyItemDamage(droppedItem));
+				} else {
+					items.add(droppedItem);
+				}
                 slot.add(i);
                 type.add("vanillaMain");
                 if ((saveItems != 0) || GCsoulBinding.keepItem(droppedItem, i, "vanillaMain", player, sbInventoryLevel)) {
@@ -37,9 +42,8 @@ public class GCminecraft {
 		// Get armor inventory
 		for(int i = 0; i < player.inventory.armorInventory.length; i++){
 			ItemStack droppedItem = player.inventory.armorItemInSlot(i);
-			
 			if (droppedItem != null) {
-				items.add(droppedItem);
+				items.add(applyItemDamage(droppedItem));
                 slot.add(i);
                 type.add("vanillaArmor");
                 if ((saveItems != 0) || GCsoulBinding.keepItem(droppedItem, i, "vanillaArmor", player, sbInventoryLevel)) {
@@ -49,5 +53,25 @@ public class GCminecraft {
 		}
 		
     }
+
+    public static ItemStack applyItemDamage(ItemStack itemstack){
+    	if(ConfigHelper.applyDamageOnEquip == 0) return itemstack;
+    	if (itemstack != null 
+                && itemstack.isItemStackDamageable()
+                && itemstack.getItem().isDamageable()
+                && (!itemstack.isStackable())
+                && (!itemstack.getItem().getHasSubtypes())
+                && (itemstack.getItem().getMaxDamage() > 0) ) {
+    		if (ConfigHelper.damageOnEquipPercentage) {
+        		final int newDamageValue = (int) (itemstack.getMaxDamage() * (ConfigHelper.applyDamageOnEquip/100) + itemstack.getItemDamage());
+                itemstack.setItemDamage(Math.min(newDamageValue, itemstack.getMaxDamage() - 1));
+    		} else {
+        		final int newDamageValue = (int) (itemstack.getItemDamage() + ConfigHelper.applyDamageOnEquip);
+                itemstack.setItemDamage(Math.min(newDamageValue, itemstack.getMaxDamage() - 1));
+    		}
+    	}
+    	return itemstack;
+    }
+    
 
 }

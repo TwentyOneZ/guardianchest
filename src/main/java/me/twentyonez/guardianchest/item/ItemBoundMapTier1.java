@@ -27,7 +27,7 @@ public class ItemBoundMapTier1 extends Item {
 	public ItemBoundMapTier1() {
 		setUnlocalizedName("boundMapTier1");
 		setTextureName("guardianchest:boundMapTier1");
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(GCMainRegistry.GCtab);
 		setMaxStackSize(1);
 	}
 	
