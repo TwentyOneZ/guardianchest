@@ -38,6 +38,7 @@ desc.guardianTier1.Warning=%1: "Me dê um mapa em branco e eu farei um mapa que 
 desc.guardianTier2.Warning=%1: "Se você morrer, te encontrarei próximo do último lugar onde você dormiu, ou no local onde você surgiu no mundo, caso ainda não tenha dormido."
 desc.boundMapTier0.Warning=Você precisa ser pelo menos nível %1 para se vincular a isso.
 desc.boundMapTier1.Warning=Agora isso parece estar pronto para entregar  a um %1.
+desc.dimension.word=dimensão
 desc.SpawnLocation.Warning=%1: "Não se preocupe, %2! Guardarei seu equipamento em
 desc.guardianChestRightClick.Minute=%1: "Somente %2 poderá resgatar meu conteúdo pelo próximo minuto!"
 desc.guardianChestRightClick.Minutes=%1: "Somente %2 poderá resgatar meu conteúdo pelos próximos %3 minutos!"

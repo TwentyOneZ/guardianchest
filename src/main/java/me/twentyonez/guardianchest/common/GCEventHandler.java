@@ -19,6 +19,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChunkCoordinates;
@@ -28,8 +29,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import java.util.Arrays;
 
 import net.minecraft.world.World;
+import net.minecraft.world.WorldProvider;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
@@ -53,7 +56,6 @@ public class GCEventHandler {
 	ArrayList<String> playerInventoryType = new ArrayList<String>();
 	ArrayList<Integer> playerInventorySlot = new ArrayList<Integer>();
 	int sbInventoryLevel  = 0; 
-
 
 	@SubscribeEvent(priority=EventPriority.LOWEST)
 	public void playerCraftsBoundMapTier0(ItemCraftedEvent event) {
@@ -89,6 +91,13 @@ public class GCEventHandler {
 			}
 		}
 	}
+
+	@SubscribeEvent(priority=EventPriority.HIGH)
+	public void onPlayerSleepInBedEvent (PlayerSleepInBedEvent event) {
+		EntityPlayer player = (EntityPlayer)event.entity;
+		
+	}
+
 	
 	@SubscribeEvent(priority=EventPriority.HIGH) 
 	public void playerDeathEvent(LivingDeathEvent event) {
@@ -168,6 +177,10 @@ public class GCEventHandler {
 				
 				if ((posY1 <= 0) || (saveItems == 2)) {
 					ChunkCoordinates bed = player.getBedLocation(player.dimension);
+					if (bed == null) {
+						world = MinecraftServer.getServer().worldServerForDimension(0);
+						bed = player.getBedLocation(0);
+					}
 					
 					if (bed != null) {
 						posY1 = bed.posY;
@@ -221,7 +234,7 @@ public class GCEventHandler {
 
 				// Warn user of its existence
 				if ((!world.isRemote) && (ConfigHelper.informCoords)) {
-		    		String warning = new String(LanguageRegistry.instance().getStringLocalization("desc.SpawnLocation.Warning").replace("%1", LanguageRegistry.instance().getStringLocalization("tile.guardianChest.name")).replace("%2", player.getDisplayName()) + ": " + posX1 + "," + posY1 + "," + posZ1 + ".");
+		    		String warning = new String(LanguageRegistry.instance().getStringLocalization("desc.SpawnLocation.Warning").replace("%1", LanguageRegistry.instance().getStringLocalization("tile.guardianChest.name")).replace("%2", player.getDisplayName()) + ": " + posX1 + "," + posY1 + "," + posZ1 + ", " + LanguageRegistry.instance().getStringLocalization("desc.dimension.word") + " " + world.provider.dimensionId + ".");
 		    		player.addChatComponentMessage(new ChatComponentText(warning));
 		    	}
 
@@ -252,7 +265,6 @@ public class GCEventHandler {
 	                        while (!player.inventory.addItemStackToInventory(playerInventoryList.get(i))) {
 	                            player.dropOneItem(true);
 	                        }
-							
 						} else {
 							// Filling Chest 1
 							
@@ -261,10 +273,7 @@ public class GCEventHandler {
 						}
 					}
 				}
-				if(!world.isRemote)
-		        {
-	                chest1.registerOwner(player, world, posX1, posY1, posZ1);
-		        }
+                chest1.registerOwner(player, world, posX1, posY1, posZ1);
 			}
 		}
 	}

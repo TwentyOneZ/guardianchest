@@ -30,7 +30,7 @@ desc.boundMapTier0.Line4=return it to an %1.
 
 desc.boundMapTier1.Line1=Mix this with an 
 desc.boundMapTier1.Line2=%1 to create a 
-desc.boundMapTier1.Line3=%2.It will 
+desc.boundMapTier1.Line3=%2.It will try to
 desc.boundMapTier1.Line4=spawn near you when you die.
 
 desc.guardianTier0.Warning=You need to be at least level %1 to awaken this.
@@ -38,6 +38,7 @@ desc.guardianTier1.Warning=%1: "Give me a blank map and I will make you a map th
 desc.guardianTier2.Warning=%1: "If you die, I will find you near the last place you slept, or the first place you appeared if you didn't sleep yet."
 desc.boundMapTier0.Warning=You need to be at least level %1 to bind yourself to this.
 desc.boundMapTier1.Warning=It seems ready to be given to an %1 now.
+desc.dimension.word=dimension
 desc.SpawnLocation.Warning=%1: "Don't worry, %2! I am keeping your equipment at
 desc.guardianChestRightClick.Minute=%1: "Only %2 can retrieve my contents for the next minute!"
 desc.guardianChestRightClick.Minutes=%1: "Only %2 can retrieve my contents for the next %3 minutes!"
