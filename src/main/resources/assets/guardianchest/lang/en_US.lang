@@ -63,3 +63,4 @@ config.timeBeforeUnsecure.Seconds=Time in seconds after death while a %1 will on
 config.Inform.ChestCoordinates=Should the %1 warn of its coordinates? (default = true)
 config.applyDamage.onEquip=Worn equipment will suffer this damage if user dies: (default = 10, 0 to disable)
 config.Damage.isPercentual=Is the damage informed a percentage of total item durability (by default: if true, a 30 durability item will suffer 3 durability, if false it will suffer 10 durability)? (default = true)
+config.Inform.returnChestToInventory=Should a %1 return to the saved inventory after death? Also returns an %2 if the chest was a bound one. (default = true)

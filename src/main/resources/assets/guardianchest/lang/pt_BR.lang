@@ -61,3 +61,4 @@ config.timeBeforeUnsecure.Seconds=Período de segundos após a morte enquanto um
 config.Inform.ChestCoordinates=O %1 deve avisar as suas coordenadas? (padrão = true)
 config.applyDamage.onEquip=Itens equipados perderão essa durabilidade se o usuário morrer: (padrão = 10, 0 para desabilitar)
 config.Damage.isPercentual=O dano informado é um percentual da durabilidade máxima (por padrão: se verdadeiro, um item de durabilidade 30 perderá 3 de durabilidade, se falso perderá 10)? (padrão = true)
+config.Inform.returnChestToInventory=Um %1 será acrescentado ao baú salvo depois da morte. Também devolve um %2 caso o baú seja vinculado. (default = true)

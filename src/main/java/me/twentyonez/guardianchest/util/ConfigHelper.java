@@ -53,6 +53,9 @@ public class ConfigHelper {
 	public static boolean damageOnEquipPercentage;
 	private static Property damageOnEquipPercentageProp;
 
+	public static boolean returnChestToInventory;
+	private static Property returnChestToInventoryProp;
+
 	public static void setupConfig(Configuration cfg, Logger logger) {
 		try {
 
@@ -95,6 +98,10 @@ public class ConfigHelper {
 			informCoordsProp = cfg.get(LanguageRegistry.instance().getStringLocalization("config.Category.General"), "informCoords", true);
 			informCoordsProp.comment = LanguageRegistry.instance().getStringLocalization("config.Inform.ChestCoordinates").replace("%1", LanguageRegistry.instance().getStringLocalization("tile.guardianChest.name"));
 			informCoords = informCoordsProp.getBoolean(true);
+
+			returnChestToInventoryProp = cfg.get(LanguageRegistry.instance().getStringLocalization("config.Category.General"), "returnChestToInventory", true);
+			returnChestToInventoryProp.comment = LanguageRegistry.instance().getStringLocalization("config.Inform.returnChestToInventory").replace("%1", LanguageRegistry.instance().getStringLocalization("item.guardianTier0.name	")).replace("%2", LanguageRegistry.instance().getStringLocalization("item.boundMapTier0.name"));
+			returnChestToInventory = returnChestToInventoryProp.getBoolean(true);
 
 		} catch(Exception e) {
 			logger.log(Level.ERROR, LanguageRegistry.instance().getStringLocalization("config.Error.Message"));

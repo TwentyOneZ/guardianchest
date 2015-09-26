@@ -243,12 +243,12 @@ public class GCEventHandler {
 				int chest1slot = 0;
 				
 				// Return a BoundMapTier0 to the chest if the chest was a Tier2.
-				if (saveItems == 2) {
+				if (saveItems == 2 && ConfigHelper.returnChestToInventory) {
 					chest1.setInventorySlotContents(chest1slot, new ItemStack(GCMainRegistry.boundMapTier0));
 					chest1slot++;
 				}
 				// Add an ItemGuardianTier0 to chest.
-				if (saveItems != -1) {
+				if (saveItems != -1  && ConfigHelper.returnChestToInventory) {
 					if (ConfigHelper.levelCostGuardianTier1 != 0) {
 						chest1.setInventorySlotContents(chest1slot, new ItemStack(GCMainRegistry.guardianTier0));
 					} else {
