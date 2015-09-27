@@ -1,6 +1,5 @@
 package me.twentyonez.guardianchest.common;
 
-import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import me.twentyonez.guardianchest.block.GCBlocks;
@@ -30,6 +29,7 @@ public class ClientProxy extends ServerProxy{
 		MinecraftForgeClient.registerItemRenderer(GCMainRegistry.guardianTier1, new ItemRenderItemGuardianTier1());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityItemGuardianTier2.class, new ItemGuardianTier2Renderer());
 		MinecraftForgeClient.registerItemRenderer(GCMainRegistry.guardianTier2, new ItemRenderItemGuardianTier2());
+		
 	}
 
 }

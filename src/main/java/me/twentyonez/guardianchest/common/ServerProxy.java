@@ -15,11 +15,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
  */
 public class ServerProxy {
 
-	public void registerRenderThings() {
-
-	}
-
 	public void registerTileEntities(){
 		GameRegistry.registerTileEntity(TileEntityGCChest.class, "GuardianChest");
+	}
+
+	public void registerRenderThings() {
+		// TODO Auto-generated method stub
+		
 	}
 }
