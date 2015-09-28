@@ -23,7 +23,7 @@ public class ItemRenderItemGuardianTier0 implements IItemRenderer {
 	}
 
 	@Override
-	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
+	public boolean handleRenderType(ItemStack itemStack, ItemRenderType type) {
 		return true;
 	}
 

@@ -98,6 +98,13 @@ public class GCsoulBinding {
                     it.remove();
                     ty.remove();
                     sl.remove();
+            	} else if ((stackInvType == "travellersGear") && GCTravellersGear.isInstalled)  {
+                    while (!player.inventory.addItemStackToInventory(stack)) {
+                    	player.dropOneItem(true);
+                    }
+                    it.remove();
+                    ty.remove();
+                    sl.remove();
             	} else if ((stackInvType == "tcAccessory") && GCTinkersConstruct.isInstalled)  {
                     while (!player.inventory.addItemStackToInventory(stack)) {
                     	player.dropOneItem(true);

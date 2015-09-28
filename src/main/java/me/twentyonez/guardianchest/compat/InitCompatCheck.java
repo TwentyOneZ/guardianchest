@@ -51,6 +51,9 @@ public class InitCompatCheck {
             GCTwilightForest.isInstalled = true;
         }
 
+        if (Loader.isModLoaded("TravellersGear")) {
+            GCTravellersGear.isInstalled = true;
+        }
         
         if (Loader.isModLoaded("Thaumcraft")) {
         	GCThaumcraft.isInstalled = true;

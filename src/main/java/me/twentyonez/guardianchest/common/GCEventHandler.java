@@ -10,6 +10,7 @@ import me.twentyonez.guardianchest.compat.GCCampingMod;
 import me.twentyonez.guardianchest.compat.GCGalacticraft;
 import me.twentyonez.guardianchest.compat.GCRpgInventory;
 import me.twentyonez.guardianchest.compat.GCTinkersConstruct;
+import me.twentyonez.guardianchest.compat.GCTravellersGear;
 import me.twentyonez.guardianchest.compat.GCTwilightForest;
 import me.twentyonez.guardianchest.compat.GCminecraft;
 import me.twentyonez.guardianchest.compat.GCsoulBinding;
@@ -161,7 +162,12 @@ public class GCEventHandler {
             	GCCampingMod.addItems(playerInventoryList, playerInventorySlot, playerInventoryType, player, saveItems, sbInventoryLevel);
             }
 			
-			// Get Tinker's Construct inventory
+			// Get TravellersGear inventory
+            if (GCTravellersGear.isInstalled()) {
+            	GCTravellersGear.addItems(playerInventoryList, playerInventorySlot, playerInventoryType, player, saveItems, sbInventoryLevel);
+            }
+
+            // Get Tinker's Construct inventory
             if (GCTinkersConstruct.isInstalled()) {
             	GCTinkersConstruct.addItems(playerInventoryList, playerInventorySlot, playerInventoryType, player, saveItems, sbInventoryLevel);
             }
