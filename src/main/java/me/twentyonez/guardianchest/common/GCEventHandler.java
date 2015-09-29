@@ -181,7 +181,7 @@ public class GCEventHandler {
 				
 				World world = player.worldObj;
 				
-				if ((posY1 <= 0) || (saveItems == 2)) {
+				if ((posY1 <= 0) || (saveItems == 2) || (saveItems == -1 && ConfigHelper.defaultsToTier2)) {
 					ChunkCoordinates bed = player.getBedLocation(player.dimension);
 					if (bed == null) {
 						world = MinecraftServer.getServer().worldServerForDimension(0);

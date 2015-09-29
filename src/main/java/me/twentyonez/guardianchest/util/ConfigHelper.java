@@ -29,6 +29,9 @@ public class ConfigHelper {
 	public static boolean requireGuardianIdol;
 	private static Property requireGuardianIdolProp;
 	
+	public static boolean defaultsToTier2;
+	private static Property defaultsToTier2Prop;
+	
 	public static boolean anyEnchantSoulBinds;
 	private static Property anyEnchantSoulBindsProp;
 
@@ -68,8 +71,12 @@ public class ConfigHelper {
 			damageOnEquipPercentage = damageOnEquipPercentageProp.getBoolean(true);
 
 			requireGuardianIdolProp = cfg.get(LanguageRegistry.instance().getStringLocalization("config.Category.General"), "requireGuardianIdol", true);
-			requireGuardianIdolProp.comment = LanguageRegistry.instance().getStringLocalization("config.GuardianIdol.Requirement").replace("%1", LanguageRegistry.instance().getStringLocalization("item.guardianTier0.name"));
+			requireGuardianIdolProp.comment = LanguageRegistry.instance().getStringLocalization("config.GuardianIdol.Requirement").replace("%1", LanguageRegistry.instance().getStringLocalization("item.guardianTier1.name"));
 			requireGuardianIdol = requireGuardianIdolProp.getBoolean(true);
+
+			defaultsToTier2Prop = cfg.get(LanguageRegistry.instance().getStringLocalization("config.Category.General"), "defaultsToTier2", false);
+			defaultsToTier2Prop.comment = LanguageRegistry.instance().getStringLocalization("config.GuardianIdol.Defaults").replace("%2", LanguageRegistry.instance().getStringLocalization("item.guardianTier2.name"));
+			defaultsToTier2 = defaultsToTier2Prop.getBoolean(false);
 
 			anyEnchantSoulBindsProp = cfg.get(LanguageRegistry.instance().getStringLocalization("config.Category.Soulbinding"), "anyEnchantSoulBinds", false);
 			anyEnchantSoulBindsProp.comment = LanguageRegistry.instance().getStringLocalization("config.Enchantments.AreAllSoulBound");
